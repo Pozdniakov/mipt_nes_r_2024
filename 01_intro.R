@@ -182,3 +182,13 @@ my_named_vector[c("c", "a")]
 #extract all values from n that are larger than average of n
 
 n[n > mean(n)]
+
+#n[c(-2, 3)] error
+n[0]
+n[100]
+n[c(2, 0, 3)]
+n[1:20]
+n[-1]
+n[-2]
+#n[-1, -2]
+n[c(-1, -2)]
