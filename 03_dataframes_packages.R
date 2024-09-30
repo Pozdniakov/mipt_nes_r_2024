@@ -53,3 +53,26 @@ read.csv("heroes_information.csv")
 #setwd()
 
 read.csv("https://raw.githubusercontent.com/Pozdniakov/tidy_stats/refs/heads/master/data/heroes_information.csv")
+
+read.csv("data/heroes_information.csv")
+
+?read.csv
+read.table(file = "https://raw.githubusercontent.com/Pozdniakov/tidy_stats/refs/heads/master/data/heroes_information.csv",
+           header = TRUE,
+           sep = ",", 
+           quote = '"',
+           dec = ".")
+
+`<3всем привет` <- 2
+
+make.names(c("hair colour", "234"))
+
+heroes <- read.csv("https://raw.githubusercontent.com/Pozdniakov/tidy_stats/refs/heads/master/data/heroes_information.csv",
+                   na.strings = c("-", "-99", "", "NA"))
+
+mean(heroes$Height, na.rm = TRUE)
+female_heroes <- heroes[heroes$Gender == "Female" & !is.na(heroes$Gender),]
+write.csv(female_heroes, "data/female_heroes.csv", row.names = FALSE)
+
+data.table::fread("data/heroes_information.csv")
+vroom::vroom("data/heroes_information.csv")
