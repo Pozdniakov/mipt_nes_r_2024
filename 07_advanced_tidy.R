@@ -70,6 +70,9 @@ new_diet %>%
 
 powers <- read_csv("https://raw.githubusercontent.com/Pozdniakov/tidy_stats/master/data/super_hero_powers.csv")
 
+# across() – working with multiple columns --------------------------------
+
+
 heroes %>%
   drop_na(Height, Weight) %>%
   group_by(Gender) %>%
@@ -122,6 +125,9 @@ na_n(c(NA, 1, NA))
 heroes %>%
   group_by(Alignment, Gender) %>%
   summarise(across(ends_with("color"), n_distinct))
+
+# nested columns ----------------------------------------------------------
+
 
 is.vector(list())
 is.atomic(list())
