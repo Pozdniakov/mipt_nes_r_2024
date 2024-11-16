@@ -1,4 +1,9 @@
 library(tidyverse)
+
+
+# EDA ---------------------------------------------------------------------
+
+
 rs <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2024/2024-05-07/rolling_stone.csv') %>%
   mutate(genre = if_else(genre == "Blues/Blues ROck",
                          "Blues/Blues Rock",
@@ -92,12 +97,18 @@ rs %>%
 rs %>%
   arrange(nchar(clean_name))
 
+# Ответы на вопросы про тест ----------------------------------------------
+
+
 named_atomic <- c(first = 1, second = 2, third = 3)
 
 named_atomic["third"]
 
 rs %>%
   pull(rank_2003, album)
+
+
+# ggplot2 -----------------------------------------------------------------
 
 
 ggplot() +
