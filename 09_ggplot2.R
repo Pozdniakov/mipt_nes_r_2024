@@ -12,7 +12,8 @@ ggplot() +
                             y = spotify_popularity),
              alpha = .2, size = 4) +
   geom_smooth(data = rs, aes(x = release_year,
-                             y = spotify_popularity))
+                             y = spotify_popularity)) +
+  coord_fixed()
 
 ggplot(data = rs %>% drop_na(artist_gender), aes(x = release_year,
                       y = spotify_popularity)) +
@@ -28,6 +29,7 @@ pal_wes <- wes_palette(name = "Zissou1", n = 5)
 class(pal_wes)
 unclass(pal_wes)
 
+#install.packages("hrbrthemes")
 rs %>% 
   drop_na(artist_gender, genre) %>%
   mutate(genre = genre %>%
@@ -36,7 +38,13 @@ rs %>%
            fct_rev()) %>% 
   ggplot() +
   geom_bar(aes(x = genre, fill = artist_gender), position = "fill") +
-  coord_flip()
+  scale_y_continuous(labels = scales::percent) +
+  labs(title = "Musculine Metal",
+       subtitle = "Gender distribution of top-500 albums in Rolling stone",
+       x = "Genre", y = "Ratio pf albums by gender",
+       fill = "Artist gender") +
+  coord_flip() +
+  hrbrthemes::theme_ipsum()
 
 rs %>% 
   drop_na(artist_gender, genre) %>%
